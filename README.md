@@ -17,3 +17,5 @@ BinomialTree.py: Contains a utility function to plot bid-ask binomial trees for 
 AmericanPut.py: Computes the price of American options according to the calibration.
 
 AmericanSpreads.py: Computes the theoretical bid-ask spreads as functions of K for American and European put options.
+
+TheoreticalPrices.py: Plot the theoretical bid-ask price curves and the observed market prices for European options.
