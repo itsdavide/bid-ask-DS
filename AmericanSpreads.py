@@ -7,10 +7,19 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+This code plots the theoretical bid-ask spread of European and American put
+options on META stock with maturity T = 20 trading days as a function of K.
+Parameters are calibrated on call and put options on META stock at the
+initial date 2023-09-29 and maturity 2023-10-27.
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 import math as m
 
+# Calibrated parameters
 S0 = 300.11
 T = 20
 u = 1.02354592

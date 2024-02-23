@@ -7,6 +7,20 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+The function plotPutTree(EE, PA, ask, T, filename) plots the binomial tree
+of an American put option:
+* EE is a binary matrix (only the upper triangle matters) denoting nodes where
+early (bid/ask) exercise is optimal;
+* PA is a real matrix (only the upper triangle matters) containing the 
+(bid/ask) price of the American option
+* ask is a boolean variable indicating if it is the ask tree (True) or the bid
+tree (False);
+* T is the maturity in periods;
+* filename is the name of the image file.
+"""
+
 from matplotlib import pyplot as plt
 import numpy as np
 

@@ -7,13 +7,19 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+Market calibration of parameters u and b_d (assuming that d = 1 / u) relying on
+the PSO technique.
+"""
+
 import math as m
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-file_calls = 'META_calls_2023-10-27_s_1_0_LOWER.csv'
-file_puts = 'META_puts_2023-10-27_s_1_0_LOWER.csv'
+file_calls = 'META_init_date_2023-09-29/META_calls_2023-10-27_s_1_0_LOWER.csv'
+file_puts = 'META_init_date_2023-09-29/META_puts_2023-10-27_s_1_0_LOWER.csv'
     
 # Load STOCK calls
 STOCK_calls = pd.read_csv('./datasets/' + file_calls)[['strike','bid','ask']]

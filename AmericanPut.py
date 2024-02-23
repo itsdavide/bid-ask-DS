@@ -7,9 +7,19 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+This code plots the bid and ask price binomial trees for an American put option 
+on the META stock with maturity T = 20 trading days and strike K = 350$.
+Parameters are calibrated on call and put options on META stock at the
+initial date 2023-09-29 and maturity 2023-10-27.
+"""
+
 import numpy as np
 from BinomialTree import plotPutTree
 
+
+# Calibrated parameters
 S0 = 300.11
 K = 350
 T = 20

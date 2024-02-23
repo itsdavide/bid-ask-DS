@@ -7,6 +7,11 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+Market calibration of parameters u, d and b_d relying on the PSO technique.
+"""
+
 from pyswarm import pso
 import pandas as pd
 import math as m
@@ -14,13 +19,15 @@ import numpy as np
 
 np.random.seed(12345)
 
+# Maturity in trading days
 T = 20
   
+# Risk-free return
 R = (1 + 0.0555)**(1/250)
 
-
-file_calls = 'META_calls_2023-10-27_s_1_0_LOWER.csv'
-file_puts = 'META_puts_2023-10-27_s_1_0_LOWER.csv'
+# Names of the dataset files
+file_calls = 'META_init_date_2023-09-29/META_calls_2023-10-27_s_1_0_LOWER.csv'
+file_puts = 'META_init_date_2023-09-29/META_puts_2023-10-27_s_1_0_LOWER.csv'
     
 # Load STOCK calls
 STOCK_calls = pd.read_csv('./datasets/' + file_calls)[['strike','bid','ask']]
@@ -55,6 +62,9 @@ P_0_bid = STOCK_puts['bid']
 P_0_ask = STOCK_puts['ask']
 K_P_T = STOCK_puts['strike']
 
+
+
+# Error function with the tree parameters u, d and b_d
 def E(x):
     u = x[0]
     d = x[1]
@@ -75,12 +85,14 @@ def E(x):
     return E
 
 
+# Constraint function to assure b_d in (0, 1 - b_u]
 def con(x):
     u = x[0]
     d = x[1]
     b_d = x[2]
     return [1 - (R - d) / (u - d) - b_d]
 
+# Bounds for the oprimization variables u, d and b_d
 lb = [R + 0.00001, 0, 0.3]
 ub = [1.056, R - 0.00001, 0.6]
 

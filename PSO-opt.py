@@ -7,6 +7,13 @@ A. Cinfrignini, D. Petturiti, B. Vantaggi (2023).
 Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
 """
 
+"""
+EXPLANATION OF THE CODE:
+This code plots the theoretical bid-ask price curves and the observed market 
+prices of European call and put options on META stock with maturity T = 20 
+trading days as a function of K.
+"""
+
 from pyswarm import pso
 import pandas as pd
 import math as m
@@ -15,13 +22,15 @@ import matplotlib.pyplot as plt
 
 np.random.seed(12345)
 
+# Maturity in trading days
 T = 20
   
+# Risk-free return
 R = (1 + 0.0555)**(1/250)
 
-
-file_calls = 'META_calls_2023-10-27_s_1_0_LOWER.csv'
-file_puts = 'META_puts_2023-10-27_s_1_0_LOWER.csv'
+# Names of the dataset files
+file_calls = 'META_init_date_2023-09-29/META_calls_2023-10-27_s_1_0_LOWER.csv'
+file_puts = 'META_init_date_2023-09-29/META_puts_2023-10-27_s_1_0_LOWER.csv'
     
 # Load STOCK calls
 STOCK_calls = pd.read_csv('./datasets/' + file_calls)[['strike','bid','ask']]
@@ -56,6 +65,8 @@ P_0_bid = STOCK_puts['bid']
 P_0_ask = STOCK_puts['ask']
 K_P_T = STOCK_puts['strike']
 
+
+# Error function with the tree parameters u and b_d (assuming d = 1/ u)
 def E(x):
     u = x[0]
     b_d = x[1]
@@ -77,9 +88,11 @@ def E(x):
     
     return E
 
+# Border of the regionf of the admissible values of b_d
 def phi(u):
     return 1 - (R - (1 / u)) / (u - (1 / u))
 
+# Constraint function to assure b_d in (0, 1 - b_u]
 def con(x):
     u = x[0]
     b_d = x[1]
