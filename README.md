@@ -1,8 +1,8 @@
 # bid-ask-DS
 Calibration code for the paper:
     
-A. Cinfrignini, D. Petturiti, B. Vantaggi (2023). 
-Market consistent bid-ask option pricing under Dempster-Shafer uncertainty.
+A. Cinfrignini, D. Petturiti, and B. Vantaggi. _Market consistent bid-ask option pricing under Dempster-Shafer uncertainty_. **Quantitative Finance**, DOI: 10.1080/14697688.2024.2353318, 2024. 
+
 
 # Requirements
 The code requires the PySwarm library available at: https://pypi.org/project/pyswarm/.
